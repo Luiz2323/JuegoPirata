@@ -1,19 +1,27 @@
 package com.e.juegopirata.controlador;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import com.e.juegopirata.R;
 
+
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class StartGame extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,10 +34,15 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
     private ImageView img6;
     private ImageView img7;
     private ImageView img8;
+    private ImageView recuadro;
     private Button btnrandom;
     private String name;
     private MediaPlayer audio;
-    private ImageView nube;
+    private ImageView palabra;
+    private FragmentManager manager;
+    private FragmentTransaction trans;
+
+    ConstraintLayout container;
     public static int contNega = 0 ;
     public static int contPosi = 0;
 
@@ -41,6 +54,9 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
     }
 
     private void inicializar() {
+        container = findViewById(R.id.container);
+
+
         img1 = findViewById(R.id.line1);
         img1.setOnClickListener(this);
 
@@ -65,9 +81,15 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
         img8 = findViewById(R.id.line8);
         img8.setOnClickListener(this);
 
+        palabra = findViewById(R.id.palabra);
+
         btnrandom = findViewById(R.id.random);
         btnrandom.setOnClickListener(this);
-        nube = findViewById(R.id.nube);
+
+        manager = getSupportFragmentManager();
+
+
+        recuadro = findViewById(R.id.imageView3);
 
         audio  = new MediaPlayer();
 
@@ -198,7 +220,6 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
             contNega = contNega + 1;
             audio = MediaPlayer.create(getApplicationContext(), R.raw.trueno);
             audio.start();
-            //nube.setImageResource(R.drawable.nube);
         }
     }
 
@@ -208,6 +229,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
             audio.reset();
             correcto();
 
+
         }else {
 
             audio = MediaPlayer.create(getApplicationContext(), R.raw.correct);
@@ -215,5 +237,31 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
 
             contPosi = contPosi+1;
         }
+        cambio();
+    }
+
+    private void cambio() {
+        switch (contPosi) {
+
+            case 1:
+                palabra.setImageResource(R.drawable.a);
+                Timer tiempo = new Timer();
+                TimerTask accion = new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        recuadro.setImageResource(R.drawable.carro);
+
+
+
+                    }
+                };
+                tiempo.schedule(accion,2000);
+              //  recuadro.setImageResource(R.drawable.carro);
+
+
+        }
+
+
     }
 }

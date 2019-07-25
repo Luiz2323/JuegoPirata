@@ -2,12 +2,10 @@ package com.e.juegopirata.controlador;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -19,8 +17,6 @@ import android.widget.Toast;
 
 import com.e.juegopirata.R;
 import com.e.juegopirata.modelo.Threadd;
-
-import java.io.IOException;
 
 
 public class StartGame extends AppCompatActivity implements View.OnClickListener {
@@ -59,7 +55,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
     }
 
     private void inicializar() {
-        threadd = new Threadd();
+
         container = findViewById(R.id.container);
 
 
@@ -257,77 +253,46 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
     }
 
     private void cambio() {
+        if (contPosi<5){
+            dormir();
+            siguiente();}
+        else {
+            Intent intent = new Intent(getApplicationContext(), AnimationsWin.class);
+            startActivity(intent);
+            finish();
 
-
-
-
-        switch (contPosi){
-            case 1:
-                dormir();
-
-                imgview4.setImageResource(R.drawable.b);
-                imgview6.setImageResource(R.drawable.e);
-                imgview5.setImageResource(R.drawable.b);
-
-                break;
-            case 2:
-                dormir();
-
-                imgview4.setImageResource(R.drawable.m);
-                imgview6.setImageResource(R.drawable.a);
-                imgview5.setImageResource(R.drawable.m);
-
-
-                break;
-
-            case 3:
-                dormir();
-
-                imgview4.setImageResource(R.drawable.g);
-                imgview6.setImageResource(R.drawable.a);
-                imgview5.setImageResource(R.drawable.t);
-
-
-
-                break;
-
-
-            case 4:
-                dormir();
-
-
-                imgview4.setImageResource(R.drawable.v);
-                imgview6.setImageResource(R.drawable.a);
-                imgview5.setImageResource(R.drawable.c);
-
-
-
-
-                break;
-
-
-            case 5:
-                pause();
-                dormir();
-                Intent intent = new Intent(getApplicationContext(), AnimationsWin.class);
-                startActivity(intent);
-                finish();
-
-                break;
-                default:
-                    Toast.makeText(this, "Opcion no valida", Toast.LENGTH_SHORT).show();
         }
 
+        }
 
+    private void siguiente() {
+        int[]imgg1 = {R.drawable.b,R.drawable.e,R.drawable.b};
+        int[]imgg2 = {R.drawable.m,R.drawable.a,R.drawable.m};
+        int[]imgg3 = {R.drawable.g,R.drawable.a,R.drawable.t};
+        int[]imgg4 = {R.drawable.v,R.drawable.a,R.drawable.c};
+        ImageView[] pru = {imgview4,imgview6,imgview5};
+        int[][] resul = {imgg1,imgg1,imgg2,imgg3,imgg4};
+        for (int i =0 ; i<imgg1.length;i++){
+
+            try {
+                int[] res =resul[contPosi];
+                pru[i].setImageResource(res[i]);
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
 
 
         }
+
+
+    }
 
     private void dormir() {
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -335,20 +300,27 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
     }
 
     private void pause() {
-        threadd.cancel(true);
+        if (threadd!=null){
+            threadd.cancel(true);
 
+        }
     }
 
     private void hilos() {
+        if (threadd!=null) {
 
-        threadd.execute();
+        }else {
+            threadd = new Threadd();
+            threadd.execute();
+            Toast.makeText(this, "Apagado Hilo", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        hilos();
+
     }
 
 

@@ -7,7 +7,7 @@ import com.e.juegopirata.R;
 
 import static com.e.juegopirata.controlador.StartGame.*;
 
-public class Threadd extends AsyncTask<Void, Integer, Boolean> {
+public class Threadd extends AsyncTask<Void, Boolean, Boolean> {
 
     int number;
 

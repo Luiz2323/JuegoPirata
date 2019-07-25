@@ -308,6 +308,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
     private void pause() {
         if (threadd!=null){
             threadd.cancel(true);
+            Toast.makeText(this, "Hilo cancelado", Toast.LENGTH_SHORT).show();
 
         }
     }
@@ -326,10 +327,22 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onLowMemory() {
         super.onLowMemory();
+        pause();
 
     }
 
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+       onLowMemory();
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        onLowMemory();
+    }
 }
 

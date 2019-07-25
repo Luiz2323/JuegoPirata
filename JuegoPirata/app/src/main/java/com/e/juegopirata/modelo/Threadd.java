@@ -27,7 +27,7 @@ public class Threadd extends AsyncTask<Void, Boolean, Boolean> {
     @SuppressLint("WrongThread")
     @Override
     protected Boolean doInBackground(Void... voids) {
-        for (int i = 0; i <= 3; i++) {
+        for (int i = 0; i <= 4; i++) {
             dormir();
 
         }
@@ -62,7 +62,7 @@ public class Threadd extends AsyncTask<Void, Boolean, Boolean> {
 
     private void dormir() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         }catch (InterruptedException e){
             e.printStackTrace();
         }

@@ -6,13 +6,10 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f69f7d5-977f-4b3e-b06c-098786bfbe1d" name="Default Changelist" comment="Modificacion en layaut de MainAactivity y archivo de recursos colors">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+    <list default="true" id="5f69f7d5-977f-4b3e-b06c-098786bfbe1d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/controlador/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/controlador/StartGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/modelo/Threadd.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/modelo/Threadd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/colorless.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/modelo/Threadd.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="40" column="38" selection-start-line="24" selection-start-column="5" selection-end-line="40" selection-end-column="38" />
+            <state relative-caret-position="-12">
+              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -79,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/controlador/StartGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="264" selection-start-line="264" selection-end-line="264" />
+            <state relative-caret-position="263">
+              <caret line="227" lean-forward="true" selection-start-line="57" selection-end-line="227" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,8 +147,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_palabra_pa.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/modelo/Threadd.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/controlador/StartGame.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/modelo/Threadd.java" />
       </list>
     </option>
   </component>
@@ -327,12 +324,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562985404571</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Nueva modificacion en la parte de StarGame y los Hilos ya no se cierra la app">
+      <created>1564064771118</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1564064771118</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="714" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16439395" />
@@ -387,7 +390,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Modificacion en layaut de MainAactivity y archivo de recursos colors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modificacion en layaut de MainAactivity y archivo de recursos colors" />
+    <MESSAGE value="Nueva modificacion en la parte de StarGame y los Hilos ya no se cierra la app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nueva modificacion en la parte de StarGame y los Hilos ya no se cierra la app" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/btn.xml">
@@ -466,13 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/modelo/Threadd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="40" column="38" selection-start-line="24" selection-start-column="5" selection-end-line="40" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/controlador/Personajes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -480,10 +477,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/modelo/Threadd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/e/juegopirata/controlador/StartGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="264" selection-start-line="264" selection-end-line="264" />
+        <state relative-caret-position="263">
+          <caret line="227" lean-forward="true" selection-start-line="57" selection-end-line="227" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

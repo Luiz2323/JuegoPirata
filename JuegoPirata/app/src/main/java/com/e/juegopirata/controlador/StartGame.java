@@ -21,6 +21,15 @@ import com.e.juegopirata.modelo.Threadd;
 
 public class StartGame extends AppCompatActivity implements View.OnClickListener {
 
+
+    int[]imgg1 = {R.drawable.b,R.drawable.e,R.drawable.b};
+    int[]imgg2 = {R.drawable.m,R.drawable.a,R.drawable.m};
+    int[]imgg3 = {R.drawable.g,R.drawable.a,R.drawable.t};
+    int[]imgg4 = {R.drawable.v,R.drawable.a,R.drawable.c};
+
+    ImageView[] pru;
+
+
     private int[] img ={R.drawable.a,R.drawable.a,R.drawable.e,R.drawable.i,R.drawable.o,R.drawable.u,R.drawable.p,R.drawable.c,R.drawable.b};
     private String[] nombres = {"a","e","a","o","a"};
     private ImageView img1;
@@ -100,6 +109,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
 
         audio  = new MediaPlayer();
         hilos();
+        pru = new ImageView[]{imgview4, imgview6, imgview5};
 
 
         aletoreo();
@@ -266,11 +276,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
         }
 
     private void siguiente() {
-        int[]imgg1 = {R.drawable.b,R.drawable.e,R.drawable.b};
-        int[]imgg2 = {R.drawable.m,R.drawable.a,R.drawable.m};
-        int[]imgg3 = {R.drawable.g,R.drawable.a,R.drawable.t};
-        int[]imgg4 = {R.drawable.v,R.drawable.a,R.drawable.c};
-        ImageView[] pru = {imgview4,imgview6,imgview5};
+
         int[][] resul = {imgg1,imgg1,imgg2,imgg3,imgg4};
         for (int i =0 ; i<imgg1.length;i++){
 

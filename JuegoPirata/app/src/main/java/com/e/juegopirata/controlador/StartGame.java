@@ -6,26 +6,27 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.provider.MediaStore;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
+
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.e.juegopirata.R;
+import com.e.juegopirata.modelo.Threadd;
 
+import java.io.IOException;
 
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class StartGame extends AppCompatActivity implements View.OnClickListener {
 
-    private int[] img ={R.drawable.a,R.drawable.e,R.drawable.i,R.drawable.o,R.drawable.u,R.drawable.p,R.drawable.c};
+    private int[] img ={R.drawable.a,R.drawable.a,R.drawable.e,R.drawable.i,R.drawable.o,R.drawable.u,R.drawable.p,R.drawable.c,R.drawable.b};
+    private String[] nombres = {"a","e","a","o","a"};
     private ImageView img1;
     private ImageView img2;
     private ImageView img3;
@@ -34,13 +35,17 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
     private ImageView img6;
     private ImageView img7;
     private ImageView img8;
-    private ImageView recuadro;
+    private ImageView imgview4;
+    private ImageView imgview6;
+    private ImageView imgview5;
+    public static ImageView recuadro;
     private Button btnrandom;
     private String name;
     private MediaPlayer audio;
-    private ImageView palabra;
+    public static ImageView palabra;
     private FragmentManager manager;
     private FragmentTransaction trans;
+    private Threadd threadd;
 
     ConstraintLayout container;
     public static int contNega = 0 ;
@@ -54,7 +59,9 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
     }
 
     private void inicializar() {
+        threadd = new Threadd();
         container = findViewById(R.id.container);
+
 
 
         img1 = findViewById(R.id.line1);
@@ -86,12 +93,17 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
         btnrandom = findViewById(R.id.random);
         btnrandom.setOnClickListener(this);
 
+        imgview4 = findViewById(R.id.imageView4);
+        imgview6 =findViewById(R.id.imageView6);
+        imgview5 = findViewById(R.id.imageView5);
+
         manager = getSupportFragmentManager();
 
 
         recuadro = findViewById(R.id.imageView3);
 
         audio  = new MediaPlayer();
+        hilos();
 
 
         aletoreo();
@@ -101,10 +113,11 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
     private void aletoreo() {
         try{
         ImageView[] preba ={img1,img2,img3,img4,img5,img6,img7,img8};
-        for (int i=0;i<=7;i++) {
-            int random = (int) ((Math.random() * 7) + 1);
-            preba[i].setImageResource(img[random - 1]);
-            String name2 = getApplicationContext().getResources().getResourceEntryName(img[random - 1]);
+
+        for (int i=0;i<preba.length;i++) {
+            int random = (int) ((Math.random() * img.length-1));
+            preba[i].setImageResource(img[random]);
+            String name2 = getApplicationContext().getResources().getResourceEntryName(img[random]);
             preba[i].setTag(name2);
         }
         }catch (Exception e){
@@ -128,7 +141,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.line1:
                 name =String.valueOf(img1.getTag());
-                if (name.equals("a")){
+                if (name.equals(nombres[contPosi])){
                     correcto();
                 }else {
                    incorrect();
@@ -137,7 +150,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.line2:
                 name =String.valueOf(img2.getTag());
-                if (name.equals("a")){
+                if (name.equals(nombres[contPosi])){
                     correcto();
                 }else {
                     incorrect();
@@ -146,7 +159,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.line3:
                  name =String.valueOf(img3.getTag());
-                if (name.equals("a")){
+                if (name.equals(nombres[contPosi])){
                     correcto();
                 }else {
                     incorrect();
@@ -155,7 +168,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.line4:
                 name =String.valueOf(img4.getTag());
-                if (name.equals("a")){
+                if (name.equals(nombres[contPosi])){
                     correcto();
                 }else {
                     incorrect();
@@ -164,7 +177,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.line5:
                 name =String.valueOf(img5.getTag());
-                if (name.equals("a")){
+                if (name.equals(nombres[contPosi])){
                     correcto();
                 }else {
                     incorrect();
@@ -174,7 +187,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.line6:
                 name =String.valueOf(img6.getTag());
-                if (name.equals("a")){
+                if (name.equals(nombres[contPosi])){
                     correcto();
                 }else {
                     incorrect();
@@ -184,7 +197,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
             case R.id.line7:
 
                 name =String.valueOf(img7.getTag());
-                if (name.equals("a")){
+                if (name.equals(nombres[contPosi])){
                     correcto();
                 }else {
                     incorrect();
@@ -193,7 +206,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.line8:
                 name =String.valueOf(img8.getTag());
-                if (name.equals("a")){
+                if (name.equals(nombres[contPosi])){
                     correcto();
                 }else {
                     incorrect();
@@ -224,6 +237,7 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
     }
 
     private void correcto() {
+
         if (audio.isPlaying()){
             audio.pause();
             audio.reset();
@@ -234,34 +248,110 @@ public class StartGame extends AppCompatActivity implements View.OnClickListener
 
             audio = MediaPlayer.create(getApplicationContext(), R.raw.correct);
             audio.start();
-
             contPosi = contPosi+1;
+            Toast.makeText(this, ""+contPosi, Toast.LENGTH_SHORT).show();
+
+
         }
         cambio();
     }
 
     private void cambio() {
-        switch (contPosi) {
 
+
+
+
+        switch (contPosi){
             case 1:
-                palabra.setImageResource(R.drawable.a);
-                Timer tiempo = new Timer();
-                TimerTask accion = new TimerTask() {
-                    @Override
-                    public void run() {
+                dormir();
 
-                        recuadro.setImageResource(R.drawable.carro);
+                imgview4.setImageResource(R.drawable.b);
+                imgview6.setImageResource(R.drawable.e);
+                imgview5.setImageResource(R.drawable.b);
+
+                break;
+            case 2:
+                dormir();
+
+                imgview4.setImageResource(R.drawable.m);
+                imgview6.setImageResource(R.drawable.a);
+                imgview5.setImageResource(R.drawable.m);
+
+
+                break;
+
+            case 3:
+                dormir();
+
+                imgview4.setImageResource(R.drawable.g);
+                imgview6.setImageResource(R.drawable.a);
+                imgview5.setImageResource(R.drawable.t);
 
 
 
-                    }
-                };
-                tiempo.schedule(accion,2000);
-              //  recuadro.setImageResource(R.drawable.carro);
+                break;
+
+
+            case 4:
+                dormir();
+
+
+                imgview4.setImageResource(R.drawable.v);
+                imgview6.setImageResource(R.drawable.a);
+                imgview5.setImageResource(R.drawable.c);
+
+
+
+
+                break;
+
+
+            case 5:
+                pause();
+                dormir();
+                Intent intent = new Intent(getApplicationContext(), AnimationsWin.class);
+                startActivity(intent);
+                finish();
+
+                break;
+                default:
+                    Toast.makeText(this, "Opcion no valida", Toast.LENGTH_SHORT).show();
+        }
+
+
+
 
 
         }
 
+    private void dormir() {
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
+
+    private void pause() {
+        threadd.cancel(true);
+
+    }
+
+    private void hilos() {
+
+        threadd.execute();
+
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        hilos();
+    }
+
+
+
 }
+

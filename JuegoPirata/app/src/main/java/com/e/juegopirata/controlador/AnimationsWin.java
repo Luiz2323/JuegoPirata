@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.e.juegopirata.R;
+
 public class AnimationsWin extends AppCompatActivity {
 
     @Override
